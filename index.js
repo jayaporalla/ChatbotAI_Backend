@@ -1,7 +1,9 @@
 const express = require('express');
 const dotenv = require('dotenv');
+const cors = require("cors");
 const connectDb = require('./Database/database');
-const router = require('./Routes/userRoutes');
+const userRoutes = require('./Routes/userRoutes');
+const chatRoutes = require('./Routes/chatRoutes');
 
 const app = express();
 
@@ -11,8 +13,12 @@ dotenv.config();
 //middlware
 app.use(express.json());
 
+//cors
+app.use(cors());
+
 //routing
-app.use("/api/user", router);
+app.use("/api/user", userRoutes);
+app.use("/api/chat", chatRoutes);
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
