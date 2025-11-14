@@ -4,7 +4,7 @@ const Conversation = require("../../Models/Conversation");
 const getConversation = [
     async (req, res) => {
         try {
-            const conversation = await Conversation.find( req.params._id );
+            const conversation = await Conversation.find({ chat: req.params.id });
 
             if(!conversation){
                 res.status(404).json({

@@ -3,8 +3,6 @@ const User = require("../../Models/User");
 const getUser = [
     async (req, res) => {
         try {
-            const { email } = req.body;
-
             const user = await User.findById(req.user._id);
 
             res.status(200).json({
